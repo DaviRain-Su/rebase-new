@@ -72,30 +72,20 @@ export default function Index() {
               boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
             }}
           >
-            <h2 style={{ color: "#0070f3", fontSize: "16px" }}>
+            <a
+              href={item.attributes.url}
+              style={{ color: "#0070f3", fontSize: "16px" }}
+            >
               {item.attributes.title}
-            </h2>
-            <p style={{ margin: "2px 0", fontSize: "14px" }}>
-              <strong>Episode:</strong> {item.attributes.episode}
-            </p>
+            </a>
             <p style={{ margin: "2px 0", fontSize: "14px" }}>
               <strong>Author:</strong> {item.attributes.author}
             </p>
             <p style={{ margin: "2px 0", fontSize: "14px" }}>
               <strong>Date:</strong> {item.attributes.time}
             </p>
-            <a
-              href={item.attributes.url}
-              style={{
-                color: "#0070f3",
-                textDecoration: "none",
-                fontSize: "14px",
-              }}
-            >
-              Course Link
-            </a>
             <p style={{ marginTop: "5px", fontSize: "14px" }}>
-              Introduction: {item.attributes.introduce}
+              <strong>Introduction:</strong> {item.attributes.introduce}
             </p>
           </li>
         ))}
