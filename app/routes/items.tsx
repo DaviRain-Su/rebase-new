@@ -1,46 +1,22 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import type { LoaderFunction } from "@remix-run/node";
-import axios from "axios";
 import "../styles/NewsStyles.css";
+import { fetchAllItems, processItems } from "./apiUtils"; // 确保路径是正确的
 
 export const loader: LoaderFunction = async () => {
   const baseUrl = "https://db.rebase.network/api/v1/geekdailies";
-  let allItems = [];
+
   try {
-    // Initial request to get pagination info
-    let response = await axios.get(
-      `${baseUrl}?pagination[page]=1&pagination[pageSize]=100`,
-    );
-    allItems = response.data.data;
-    const pageCount = response.data.meta.pagination.pageCount;
+    // Fetch all items from the API
+    const allItems = await fetchAllItems(baseUrl);
 
-    // Fetch remaining pages
-    const requests = [];
-    for (let page = 2; page <= pageCount; page++) {
-      requests.push(
-        axios.get(
-          `${baseUrl}?pagination[page]=${page}&pagination[pageSize]=100`,
-        ),
-      );
-    }
-    const responses = await Promise.all(requests);
-    responses.forEach((res) => {
-      allItems = allItems.concat(res.data.data);
-    });
+    // Process items (filter and sort)
+    const processedItems = processItems(allItems);
 
-    // Filter items with valid URLs
-    const validUrlRegex = /^(https?:\/\/)?([\w\d\-]+\.)+\w{2,}(\/.+)?$/;
-    allItems = allItems.filter((item) =>
-      validUrlRegex.test(item.attributes.url),
-    );
-
-    // Sort all items by date
-    allItems.sort(
-      (a, b) => new Date(b.attributes.time) - new Date(a.attributes.time),
-    );
-
-    return allItems;
+    // Return only the latest 10 items
+    return processedItems;
   } catch (error) {
+    console.error(error);
     throw new Response("Failed to fetch data", { status: 500 });
   }
 };
