@@ -61,12 +61,27 @@ export default function Index() {
         maxWidth: "800px",
         margin: "0 auto",
         padding: "10px",
+        backgroundColor: "#f9f9f9",
+        boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
+        borderRadius: "5px",
       }}
     >
-      <h1 style={{ textAlign: "center", color: "#333", fontSize: "18px" }}>
+      <h1
+        style={{
+          textAlign: "center",
+          color: "#333",
+          fontSize: "18px",
+        }}
+      >
         Welcome to Rebase News
       </h1>
-      <ul style={{ listStyleType: "none", padding: "0", margin: "0" }}>
+      <ul
+        style={{
+          listStyleType: "none",
+          padding: "0",
+          margin: "0",
+        }}
+      >
         {data.map((item) => (
           <li
             key={item.id}
@@ -80,17 +95,36 @@ export default function Index() {
           >
             <a
               href={item.attributes.url}
-              style={{ color: "#0070f3", fontSize: "16px" }}
+              style={{
+                color: "#0070f3",
+                fontSize: "16px",
+                textDecoration: "none", // Removes underline from links
+              }}
             >
               {item.attributes.title}
             </a>
-            <p style={{ margin: "2px 0", fontSize: "14px" }}>
+            <p
+              style={{
+                margin: "2px 0",
+                fontSize: "14px",
+              }}
+            >
               <strong>Author:</strong> {item.attributes.author}
             </p>
-            <p style={{ margin: "2px 0", fontSize: "14px" }}>
+            <p
+              style={{
+                margin: "2px 0",
+                fontSize: "14px",
+              }}
+            >
               <strong>Date:</strong> {item.attributes.time}
             </p>
-            <p style={{ marginTop: "5px", fontSize: "14px" }}>
+            <p
+              style={{
+                marginTop: "5px",
+                fontSize: "14px",
+              }}
+            >
               <strong>Introduction:</strong> {item.attributes.introduce}
             </p>
           </li>
