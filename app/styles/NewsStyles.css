@@ -44,3 +44,32 @@
     margin-top: 5px;
     font-size: 14px;
 }
+
+/* 导航栏整体样式 */
+nav {
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    padding: 10px 20px; /* 内边距 */
+    text-align: center; /* 文本居中 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微的阴影效果 */
+}
+
+/* 链接的通用样式 */
+nav a {
+    color: #007bff; /* Bootstrap 蓝色 */
+    text-decoration: none; /* 去掉下划线 */
+    font-weight: bold; /* 文字加粗 */
+    margin: 0 10px; /* 左右间距 */
+    padding: 5px 10px; /* 增加填充 */
+    transition: color 0.3s ease-in-out; /* 平滑颜色过渡效果 */
+}
+
+/* 链接在鼠标悬停时的样式 */
+nav a:hover {
+    color: #0056b3; /* 深蓝色 */
+    text-decoration: underline; /* 添加下划线 */
+}
+
+/* 链接在激活状态（点击后）的样式 */
+nav a:active {
+    color: #004085; /* 更深的蓝色 */
+}

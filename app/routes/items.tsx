@@ -1,17 +1,7 @@
-import type { MetaFunction } from "@remix-run/node";
-import "../styles/NewsStyles.css";
-//import { Link } from "@remix-run/react";
 import { Link, useLoaderData } from "@remix-run/react";
 import type { LoaderFunction } from "@remix-run/node";
 import axios from "axios";
 import "../styles/NewsStyles.css";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Rebase News" },
-    { name: "description", content: "Welcome to Rebase News" },
-  ];
-};
 
 export const loader: LoaderFunction = async () => {
   const baseUrl = "https://db.rebase.network/api/v1/geekdailies";
@@ -48,11 +38,8 @@ export const loader: LoaderFunction = async () => {
     allItems.sort(
       (a, b) => new Date(b.attributes.time) - new Date(a.attributes.time),
     );
-    // Randomly pick 10 items from the list
-    const shuffled = allItems.sort(() => 0.5 - Math.random());
-    const randomItems = shuffled.slice(0, 10);
 
-    return randomItems;
+    return allItems;
   } catch (error) {
     throw new Response("Failed to fetch data", { status: 500 });
   }
@@ -62,12 +49,11 @@ export default function Index() {
   const data = useLoaderData();
   return (
     <div className="newsContainer">
-      <h1>Welcome to Rebase News</h1>
+      <h1 className="newsTitle">All about Rebase News</h1>
       <nav>
         <Link to="/items">All Rebase News</Link> |{" "}
         <Link to="/latest">Latest Rebase News</Link>
       </nav>
-      <h1 className="newsTitle">Random Rebase News</h1>
       <ul className="newsList">
         {data.map((item) => (
           <li key={item.id} className="newsItem">
