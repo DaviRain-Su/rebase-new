@@ -1,0 +1,43 @@
+/* styles.module.css */
+.container {
+    font-family: "Arial, sans-serif";
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.heading {
+    text-align: center;
+    color: #333;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.listItem {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    color: #0070f3;
+}
+
+.detail {
+    margin: 5px 0;
+}
+
+.link {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+.introduction {
+    margin-top: 10px;
+}
