@@ -34,6 +34,12 @@ export const loader: LoaderFunction = async () => {
       allItems = allItems.concat(res.data.data);
     });
 
+    // Filter items with valid URLs
+    const validUrlRegex = /^(https?:\/\/)?([\w\d\-]+\.)+\w{2,}(\/.+)?$/;
+    allItems = allItems.filter((item) =>
+      validUrlRegex.test(item.attributes.url),
+    );
+
     // Sort all items by date
     allItems.sort(
       (a, b) => new Date(b.attributes.time) - new Date(a.attributes.time),
