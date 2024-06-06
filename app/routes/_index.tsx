@@ -1,6 +1,7 @@
 import type { MetaFunction, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import axios from "axios";
+import "../styles/NewsStyles.css";
 
 export const meta: MetaFunction = () => {
   return [
@@ -54,77 +55,21 @@ export const loader: LoaderFunction = async () => {
 export default function Index() {
   const data = useLoaderData();
   return (
-    <div
-      style={{
-        fontFamily: "Arial, sans-serif",
-        lineHeight: "1.4",
-        maxWidth: "800px",
-        margin: "0 auto",
-        padding: "10px",
-        backgroundColor: "#f9f9f9",
-        boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
-        borderRadius: "5px",
-      }}
-    >
-      <h1
-        style={{
-          textAlign: "center",
-          color: "#333",
-          fontSize: "18px",
-        }}
-      >
-        Welcome to Rebase News
-      </h1>
-      <ul
-        style={{
-          listStyleType: "none",
-          padding: "0",
-          margin: "0",
-        }}
-      >
+    <div className="newsContainer">
+      <h1 className="newsTitle">Welcome to Rebase News</h1>
+      <ul className="newsList">
         {data.map((item) => (
-          <li
-            key={item.id}
-            style={{
-              background: "#f9f9f9",
-              margin: "5px 0",
-              padding: "10px",
-              borderRadius: "5px",
-              boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
-            }}
-          >
-            <a
-              href={item.attributes.url}
-              style={{
-                color: "#0070f3",
-                fontSize: "16px",
-                textDecoration: "none", // Removes underline from links
-              }}
-            >
+          <li key={item.id} className="newsItem">
+            <a href={item.attributes.url} className="newsLink">
               {item.attributes.title}
             </a>
-            <p
-              style={{
-                margin: "2px 0",
-                fontSize: "14px",
-              }}
-            >
+            <p className="newsText">
               <strong>Author:</strong> {item.attributes.author}
             </p>
-            <p
-              style={{
-                margin: "2px 0",
-                fontSize: "14px",
-              }}
-            >
+            <p className="newsText">
               <strong>Date:</strong> {item.attributes.time}
             </p>
-            <p
-              style={{
-                marginTop: "5px",
-                fontSize: "14px",
-              }}
-            >
+            <p className="newsIntroduction">
               <strong>Introduction:</strong> {item.attributes.introduce}
             </p>
           </li>
