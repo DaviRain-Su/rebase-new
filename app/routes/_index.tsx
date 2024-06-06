@@ -5,8 +5,8 @@ import axios from "axios";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Rebase News" },
+    { name: "description", content: "Welcome to Rebase News" },
   ];
 };
 
@@ -59,7 +59,7 @@ export default function Index() {
       }}
     >
       <h1 style={{ textAlign: "center", color: "#333", fontSize: "18px" }}>
-        Welcome to Remix
+        Welcome to Rebase News
       </h1>
       <ul style={{ listStyleType: "none", padding: "0", margin: "0" }}>
         {data.map((item) => (
