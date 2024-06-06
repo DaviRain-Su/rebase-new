@@ -1,7 +1,6 @@
 import type { MetaFunction, LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import axios from "axios";
-//import styles from "../../stype/styles.module.css";
 
 export const meta: MetaFunction = () => {
   return [
