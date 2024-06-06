@@ -42,6 +42,7 @@ export default function Index() {
     <div className="newsContainer">
       <h1>Welcome to Rebase News</h1>
       <nav>
+        <Link to="/">Random Rebase News</Link> |{" "}
         <Link to="/items">All Rebase News</Link> |{" "}
         <Link to="/latest">Latest Rebase News</Link>
       </nav>

@@ -25,11 +25,13 @@ export default function Index() {
   const data = useLoaderData();
   return (
     <div className="newsContainer">
-      <h1 className="newsTitle">About Latest Rebase News</h1>
+      <h1>Welcome to Rebase News</h1>
       <nav>
+        <Link to="/">Random Rebase News</Link> |{" "}
         <Link to="/items">All Rebase News</Link> |{" "}
         <Link to="/latest">Latest Rebase News</Link>
       </nav>
+      <h1 className="newsTitle">About Latest Rebase News</h1>
       <ul className="newsList">
         {data.map((item) => (
           <li key={item.id} className="newsItem">
